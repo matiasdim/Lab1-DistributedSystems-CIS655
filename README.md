@@ -1,2 +1,32 @@
-# Lab1-DistributedSystems-CIS655
+# CIS655 - Lab 01 - Matías Gil Echavarría
 Safe Threading in Java
+
+### PROGRAM A: Not safe Threading example.
+| Number of Threads | N*1000000 | Final Counter | Final Counter = N*1000000 ? |
+|-------------------|-----------|---------------|-----------------------------|
+| 2                 | 1064703   | 2000000       | No                          | 
+| 4                 | 3449833   | 4000000       | No                          |
+| 6                 | 4800965   | 6000000       | No                          |
+| 8                 | 7691220   | 8000000       | No                          |
+| 16                | 13651240  | 16000000      | No                          |
+| 32                | 24694961  | 32000000      | No                          |
+
+1. Is the counter always equal to n * 1000000, where n is the number of thread created? Explain why or why not.
+**ANSWER:** It is never equal to n * 1000000 and the reason for this is that my algorithm on this case is not thread safe. It means that our counter is being accessed by differente process' threads so when a particular thread is incrementeing it, there are more threads that are doing the same thing so they are always getting the counter to perform the increment with a different value overwriting it and losing the correct count number.
+
+
+### PROGRAM B: Safe Threading example.
+| Number of Threads | N*1000000 | Final Counter | Final Counter = N*1000000 ? |
+|-------------------|-----------|---------------|-----------------------------|
+| 2                 | 2000000   | 2000000       | Yes                         | 
+| 4                 | 4000000   | 4000000       | Yes                         |
+| 6                 | 6000000   | 6000000       | Yes                         |
+| 8                 | 8000000   | 8000000       | Yes                         |
+| 16                | 16000000  | 16000000      | Yes                         |
+| 32                | 32000000  | 32000000      | Yes                         |
+
+2. Is the counter always equal to n * 1000000, where n is the number of thread created? Explain why or why not.
+**ANSWER:** It is always equal and the reason for this is that my algorithm on this casi is thread safe. It means that the counter is accessed by one and only one thread at the time so the counter always will be increased using the correct *"current value"* of it. Thats whay on this program B it works well. It is done using a synchronized methods to avoid a particular thread using it while another one is performing the same method. 
+
+3. Analyze the differences in elapsed time between Program A and Program B. Is there a significant difference? Explain why or why not.
+**ANSWER:** The notable differences are just because on the safe thread program every thread needs to wait the current execution to finish to be able to be executed. This flow obviously will take more time that the not safe thread flow because the not safe will just execute the increment method as fast as it can and it will not spend time waiting for other threads to be executed.
