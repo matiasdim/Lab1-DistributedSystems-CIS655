@@ -8,6 +8,7 @@ public class Main {
 
 
     public static void main (String args[]){
+        long startTime = System.currentTimeMillis();
 
         Options options = new Options();
 
@@ -51,6 +52,9 @@ public class Main {
                 thds[i].join();
             }
             System.out.println(thread.count);
+            long endTime   = System.currentTimeMillis();
+            long totalTime = endTime - startTime;
+            System.out.println(totalTime);
         }catch(InterruptedException e) {
             System.out.println("Thread interrupted.");
         }
