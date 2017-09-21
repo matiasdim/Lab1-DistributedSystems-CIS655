@@ -29,4 +29,5 @@ Safe Threading in Java
 **ANSWER:** It is always equal and the reason for this is that my algorithm on this case is thread safe. It means that the counter is accessed by one and only one thread at the time so the counter always will be increased using the correct *"current value"* of it. Thats whay on this program B it works well. It is done using a synchronized methods to avoid a particular thread using it while another one is performing the same method. 
 
 3. Analyze the differences in elapsed time between Program A and Program B. Is there a significant difference? Explain why or why not.
-**ANSWER:** The notable differences are just because on the safe thread program every thread needs to wait the current execution to finish to be able to be executed. This flow obviously will take more time than the non thread safe flow because it will just execute the increment method as fast as it can and it will not spend time waiting for other threads to be executed.
+
+**ANSWER:** The notable differences are just because on the safe thread program every thread needs to wait the current execution to finish to be executed. This flow obviously will take more time than the non safe thread flow because it will just execute the increment method as fast as it can and it will not spend time waiting for other threads to be executed.
