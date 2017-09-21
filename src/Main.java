@@ -8,8 +8,10 @@ public class Main {
 
 
     public static void main (String args[]){
+        // start counting execution time.
         long startTime = System.currentTimeMillis();
 
+        // Console execution stuff
         Options options = new Options();
 
         Option numberOfThreads = new Option("t", "threads", true, "number of threads");
@@ -38,14 +40,19 @@ public class Main {
         String isSafeBoolString = cmd.getOptionValue("safe");
 
 
+        // Instance of my Threads class
         Threads thread= new Threads(Boolean.parseBoolean(isSafeBoolString));
+        // Array of Threads definition
         Thread[] thds = new Thread[Integer.parseInt(threadNumberString)];
+        //Thread instantiation
         for(int i = 0; i< Integer.parseInt(threadNumberString); i++){
             thds[i] = new Thread(thread);
         }
+        //Thread initialization
         for(int i = 0; i< Integer.parseInt(threadNumberString); i++){
             thds[i].start();
         }
+
 
         try {
             for(int i = 0; i< Integer.parseInt(threadNumberString); i++){
